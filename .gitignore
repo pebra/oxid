@@ -1,2 +1,3 @@
 .idea/
 demo/public
+demo/etc/ssmtp/ssmtp.conf

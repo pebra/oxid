@@ -6,8 +6,8 @@ pushd $DIR
 
 # Build script for testing the Docker container
 docker-compose build
-docker tag oxiddocker_oxid mesa/oxid:latest
+docker tag oxid_oxid pebra/oxidce:latest
 
-docker rmi oxiddocker_oxid
+docker rmi oxid_oxid
 
 popd

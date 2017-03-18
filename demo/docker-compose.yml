@@ -1,7 +1,7 @@
 version: '2'
 services:
     oxid:
-        image: mesa/oxid:latest
+        image: pebra/oxidce:latest
         container_name: oxid
         ports:
             - "80:80"
@@ -9,8 +9,9 @@ services:
             - oxid_db:oxid_db
         volumes:
             - "/etc/localtime:/etc/localtime"
-            - "./public/out/my_module:/data/out/my_module"
-            - "./public/modules/my_module:/data/modules/my_module"
+            - "./etc/ssmtp:/etc/ssmtp"
+              #- "./public/out/my_module:/data/out/my_module"
+              #- "./public/modules/my_module:/data/modules/my_module"
 
         environment:
             MYSQL_HOST: oxid_db
@@ -24,7 +25,7 @@ services:
             OXID_COMPILE_DIR: "/data/tmp"
 
     oxid_db:
-        image: mariadb:latest
+        image: mysql/mysql-server:5.6.35
         container_name: oxid_db
 #       Open ports for external access in development only
 #       ports:
