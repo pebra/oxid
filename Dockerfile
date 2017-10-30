@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Daniel Langemann <daniel.langemann@gmx.de>
+MAINTAINER Peter Braendel <self@pebra.net>
 
 RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main" > /etc/apt/sources.list.d/ondrej_php.list; \
     echo "deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main " >> /etc/apt/sources.list.d/ondrej_php.list; \
