@@ -57,6 +57,8 @@ ENV OXID_ADMIN_USERNAME "docker"
 
 # OXID configuration for config.inc.php
 ENV OXID_SHOP_URL "http://localhost"
+ENV OXID_SHOP_SSL_URL "http://localhost"
+ENV OXID_SHOP_ADMIN_SSL_URL "http://localhost"
 ENV OXID_UTF_MODE 1
 ENV OXID_IDEBUG 0
 ENV OXID_COMPILE_DIR "/data/tmp"
@@ -93,6 +95,8 @@ RUN echo "ServerName ${APACHE_SERVERNAME}" | tee /etc/apache2/conf-available/fqd
     sed -i "s/'<dbUser_ce>'/getenv('MYSQL_USER')/" /data/config.inc.php; \
     sed -i "s/'<dbPwd_ce>'/getenv('MYSQL_PASSWORD')/" /data/config.inc.php; \
     sed -i "s/'<sShopURL_ce>'/getenv('OXID_SHOP_URL')/" /data/config.inc.php; \
+    sed -i "s/'<sSSLShopURL_ce>'/getenv('OXID_SHOP_SSL_URL')/" /data/config.inc.php; \
+    sed -i "s/'<sAdminSSLURL_ce>'/getenv('OXID_SHOP_ADMIN_SSL_URL')/" /data/config.inc.php; \
     sed -i "s/'<sShopDir_ce>'/getenv('DOCKER_DOCUMENT_ROOT')/" /data/config.inc.php; \
     sed -i "s/'<iUtfMode>'/getenv('OXID_UTF_MODE')/" /data/config.inc.php; \
     sed -i "s/'<sCompileDir_ce>'/getenv('OXID_COMPILE_DIR')/" /data/config.inc.php; \
