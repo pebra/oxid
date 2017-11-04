@@ -95,8 +95,8 @@ RUN echo "ServerName ${APACHE_SERVERNAME}" | tee /etc/apache2/conf-available/fqd
     sed -i "s/'<dbUser_ce>'/getenv('MYSQL_USER')/" /data/config.inc.php; \
     sed -i "s/'<dbPwd_ce>'/getenv('MYSQL_PASSWORD')/" /data/config.inc.php; \
     sed -i "s/'<sShopURL_ce>'/getenv('OXID_SHOP_URL')/" /data/config.inc.php; \
-    sed -i "s/'<sSSLShopURL_ce>'/getenv('OXID_SHOP_SSL_URL')/" /data/config.inc.php; \
-    sed -i "s/'<sAdminSSLURL_ce>'/getenv('OXID_SHOP_ADMIN_SSL_URL')/" /data/config.inc.php; \
+    sed -i -r "s/(sSSLShopURL\s+=).*/\1\ getenv('OXID_SHOP_SSL_URL');/" /data/config.inc.php; \
+    sed -i -r "s/(sAdminSSLURL\s+=).*/\1\ getenv('OXID_SHOP_ADMIN_SSL_URL');/" /data/config.inc.php; \
     sed -i "s/'<sShopDir_ce>'/getenv('DOCKER_DOCUMENT_ROOT')/" /data/config.inc.php; \
     sed -i "s/'<iUtfMode>'/getenv('OXID_UTF_MODE')/" /data/config.inc.php; \
     sed -i "s/'<sCompileDir_ce>'/getenv('OXID_COMPILE_DIR')/" /data/config.inc.php; \
